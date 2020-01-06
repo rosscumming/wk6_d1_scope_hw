@@ -1,19 +1,3 @@
-# Scope Homework: Who Dunnit
-
-### Learning Objectives
-
-- Understand function scope
-- Know the difference in between the let and const keywords
-
-## Brief
-
-Using your knowledge about scope and variable declarations in JavaScript, look at the following code snippets and predict what the output or error will be and why. Copy the following episodes into a JavaScript file and add comments under each one detailing the reason for your predicted output.
-
-### MVP
-
-#### Episode 1
-
-```js
 const scenario = {
   murderer: 'Miss Scarlet',
   room: 'Library',
@@ -26,12 +10,9 @@ const declareMurderer = function() {
 
 const verdict = declareMurderer();
 console.log(verdict);
-```
-
-
-#### Episode 2
-
-```js
+//
+// // verdict should be able to log declareMurderer as its within scope and can access this.
+//
 const murderer = 'Professor Plum';
 
 const changeMurderer = function() {
@@ -45,11 +26,9 @@ const declareMurderer = function() {
 changeMurderer();
 const verdict = declareMurderer();
 console.log(verdict);
-```
 
-#### Episode 3
+// const only allows reassign on array or objects. as murderer is a const, this cannot be reassigned
 
-```js
 let murderer = 'Professor Plum';
 
 const declareMurderer = function() {
@@ -61,12 +40,10 @@ const firstVerdict = declareMurderer();
 console.log('First Verdict: ', firstVerdict);
 
 const secondVerdict = `The murderer is ${murderer}.`;
-console.log('Second Verdict: ', secondVerdict);
-```
+console.log('Second Verdict: ', secondVerdict)
 
-#### Episode 4
+//first verdict will changed the murderer variable, however second verdict will not change and stay as prof plum  as its outwith the scope of the funciton
 
-```js
 let suspectOne = 'Miss Scarlet';
 let suspectTwo = 'Professor Plum';
 let suspectThree = 'Mrs. Peacock';
@@ -79,11 +56,9 @@ const declareAllSuspects = function() {
 const suspects = declareAllSuspects();
 console.log(suspects);
 console.log(`Suspect three is ${suspectThree}.`);
-```
 
-#### Episode 5
+//first console log will change suspect three as the variables are defined as let which means the function can change this, the second console log will result in the original naming of mrs peacock
 
-```js
 const scenario = {
   murderer: 'Miss Scarlet',
   room: 'Kitchen',
@@ -101,11 +76,9 @@ const declareWeapon = function() {
 changeWeapon('Revolver');
 const verdict = declareWeapon();
 console.log(verdict);
-```
 
-#### Episode 6
+//weapon will change to revolver as the changeweapon function has access to the scenario object as it is an object which is  mutable even although its a const
 
-```js
 let murderer = 'Colonel Mustard';
 
 const changeMurderer = function() {
@@ -125,11 +98,10 @@ const declareMurderer = function () {
 changeMurderer();
 const verdict = declareMurderer();
 console.log(verdict);
-```
 
-#### Episode 7
 
-```js
+// murderer will be assigned as mrs white as the plottwist function is within the scope of changemurderer. once this is called the change will be effective.
+
 let murderer = 'Professor Plum';
 
 const changeMurderer = function() {
@@ -155,11 +127,11 @@ const declareMurderer = function() {
 changeMurderer();
 const verdict = declareMurderer();
 console.log(verdict);
-```
 
-#### Episode 8
+// not too sure about this one, think it may be plotTwist but unsure of the order in how these functions are called.
+//after checking once the file has run, i now see that in plottwist, murderer is defined with let which means that its a new variable within that block so only that will change
 
-```js
+
 const scenario = {
   murderer: 'Mrs. Peacock',
   room: 'Conservatory',
@@ -194,11 +166,10 @@ const declareWeapon = function() {
 changeScenario();
 const verdict = declareWeapon();
 console.log(verdict);
-```
 
-#### Episode 9
 
-```js
+// i believe the weapon will be candle stick as each if statement in functions are true.
+
 let murderer = 'Professor Plum';
 
 if (murderer === 'Professor Plum') {
@@ -211,8 +182,6 @@ const declareMurderer = function() {
 
 const verdict = declareMurderer();
 console.log(verdict);
-```
 
-### Extensions
 
-Make up your own episode!
+// murderer will be prof plum, as within the if statement, it doesn't need let. as this is there, it will not reassign to mrs peacock
